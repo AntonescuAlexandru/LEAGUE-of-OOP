@@ -1,0 +1,38 @@
+  In liniile ce urmeaza voi prezenta implementarea aleasa pentru prima tema la
+POO.
+  Pentru inceput voi prezenta clasele ce definesc eroii din joc. In acest sens
+am ales ca creez o clasa abstracta "Hero" cu doar doua metode abstracte,
+acestea reprezentand cele doua abilitati ale eroilor. Clasa Hero am extins-o
+in patru clase, fiecare reprezentand cate un tip de erou: Pyromancer, Knight,
+Wizard si Rogue. In acest fel in clasa Hero am implementat toate metodele
+comune eroilor si in clasele derivate am implementat doar cele doua abilitati,
+care difera in functie de erou. De asemenea, in clasa Hero am initializat
+campurile care contin aceleasi valori initiale pentru toti eroii, iar in
+clasele derivate am initializat campurile specifice fiecarui tip de erou,
+cum ar fi viata de baza.
+  Pe langa aceste clase, am folosit trei clase de constate :RaceModifiers (unde
+am setat modificatorii de rasa), LandModifiers (unde am setat modificatorii
+de teren), Constants (unde am salvat alte constante precum viata de baza).
+In plus, am creat o clasa "AuxiliaryVars" (pe care am agregat-o in clasa Hero),
+unde am retinut anumite variabile necesare in prelucrarea Dot, dar si a unor
+necesare unor abilitati, precum deflect.
+  Pentru realizarea hartii de joc, am creat o clasa BattleMap in care am creat
+o matrice de obiecte MapCell (o clasa care contine doua de campuri de obiecte
+de tip Hero si un camp de tip String si metode de get si set), si doua campuri,
+reprezentand numarul de linii si coloane. In aceasta clasa am definit o metoda
+care sterge toti eroii din harta, o metoda care insereaza un erou in harta,
+o metoda care testeaza daca intr-o celula exista o doi eroi (deci daca are loc
+o batalie) si o metoda care creeaza instantiaza o celula din harta(ii si
+seteaza tipul) prin intermediul unei clase CreateCell (o implementare
+aproximativa a paternului Factory).
+  Evenimentele ce se desfasoara pe perioada unei runde sunt definite in clasa
+Round. Un obiect al acestei clase se creeaza mereu cand trece la o runda noua.
+Aceasta clasa contine o metoda princila numita execute() in care se ruleaza
+restul metodelor. Fiecare metoda reprezinta o etapa din cadrul unei runde:
+mai intai se seteaza pozitiile fiecarui erou, dupa care se sterg toti eroii din
+harta si se insereaza eroii ramasi inca in viata pe noile pozitii. Dupa ce se
+executa aceste operatiuni se cauta toate bataliile din harta si se si executa
+(in metoda executeBattles()).
+  In main, am facut citirea datelor de intrare, am initializat celulele din
+harta, un vector de eroi si am executat pe rand fiecare runda. In final am
+afisat datele cerute de cerinta temei.
